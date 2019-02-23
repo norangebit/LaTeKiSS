@@ -1,0 +1,365 @@
+\documentclass[
+$if(twoside)$
+twoside,
+$endif$
+$if(openright)$
+openright,
+$endif$
+$if(title)$
+titlepage,
+$endif$
+numbers=noenddot,
+headinclude,
+footinclude,
+cleardoublepage=empty,
+abstract=on,
+$if(paper)$
+paper=$paper$,
+$endif$
+$if(fontsize)$
+fontsize=$fontsize$
+$endif$
+BCOR=5mm
+]{scrreprt}
+
+$if(draf)$
+\newcommand{\myVersion}{$draf$}
+$endif$
+
+%*******************************************************
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+$if(babel)$
+\usepackage[$babel$]{babel}
+$endif$
+$if(acronym)$
+\usepackage[$if(onlyused)$printonlyused, $endif$smaller]{acronym}
+$endif$
+
+$if(bibliography)$
+\PassOptionsToPackage{%
+	%backend=biber,bibencoding=utf8, %instead of bibtex
+	backend=bibtex8,bibencoding=ascii,%
+	language=auto,%
+	style=numeric-comp,%
+	%style=authoryear-comp, % Author 1999, 2010
+	%bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
+	sorting=nyt, % name, year, title
+	maxbibnames=10, % default: 3, et al.
+	%backref=true,%
+	natbib=true % natbib compatibility mode (\citep and \citet still work)
+}{biblatex}
+\usepackage{biblatex}
+
+\addbibresource{$bibliography$}
+$endif$
+
+\PassOptionsToPackage{
+        $if(draf)$
+	drafting=true,
+        $endif$    % print version information on the bottom of the pages
+	tocaligned=false, % the left column of the toc will be aligned (no indentation)
+	dottedtoc=false,  % page numbers in ToC flushed right
+	eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
+	linedheaders=false,       % chaper headers will have line above and beneath
+	floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
+	eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
+	beramono=true,    % toggle a nice monospaced font (w/ bold)
+	palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
+	style=classicthesis % classicthesis, arsclassica
+}{classicthesis}
+\usepackage{classicthesis}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true, $if(hidelinks)$hidelinks$endif$, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,
+  urlcolor=CTurl, linkcolor=CTlink, citecolor=CTcitation,
+  breaklinks=true, pageanchor=true,
+  pdfpagemode=UseNone,
+  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,
+  hypertexnames=true, pdfhighlight=/O,
+  $if(title)$
+  pdftitle={$title$},
+  $endif$
+  $if(author)$
+  pdfauthor={$author$},
+  $endif$
+  $if(subject)$
+  pdfsubject={$subject$},
+  $endif$
+  pdfkeywords={$for(keywords)$$keywords$, $endfor$},
+  pdfcreator={pandoc},
+  pdfproducer={LaTeX with hyperref, latekiss and classicthesis}
+}
+
+% pandoc compatibility 
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\passthrough}[1]{#1}
+
+% pandoc highlight
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+$if(monochrome)$
+\newcommand{\AlertTok}[1]{\textbf{#1}}
+\newcommand{\AnnotationTok}[1]{\textit{#1}}
+\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\BaseNTok}[1]{#1}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textit{#1}}
+\newcommand{\CommentVarTok}[1]{\textit{#1}}
+\newcommand{\ConstantTok}[1]{#1}
+\newcommand{\ControlFlowTok}[1]{\textbf{#1}}
+\newcommand{\DataTypeTok}[1]{\underline{#1}}
+\newcommand{\DecValTok}[1]{#1}
+\newcommand{\DocumentationTok}[1]{\textit{#1}}
+\newcommand{\ErrorTok}[1]{\textbf{#1}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{#1}
+\newcommand{\FunctionTok}[1]{#1}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textit{#1}}
+\newcommand{\KeywordTok}[1]{\textbf{#1}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\OtherTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textbf{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{#1}
+\newcommand{\SpecialStringTok}[1]{#1}
+\newcommand{\StringTok}[1]{#1}
+\newcommand{\VariableTok}[1]{#1}
+\newcommand{\VerbatimStringTok}[1]{#1}
+\newcommand{\WarningTok}[1]{\textit{#1}}
+$else$
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+$endif$
+%*******************************************************
+
+\begin{document}
+\pagenumbering{roman}
+
+% Titlepage
+$if(title)$
+\begin{titlepage}
+
+\pagestyle{plain}
+\pdfbookmark[1]{Il mio titolo}{titlepage}
+$if(twoside)$
+\begin{addmargin}[-1cm]{-3cm}
+$endif$
+\begin{center}
+\Large
+
+$if(institute)$
+\spacedallcaps{\LARGE $institute$}
+$endif$
+$if(department)$
+\spacedlowsmallcaps{\LARGE $department$}
+$endif$
+$if(logo)$
+\vfill
+\includegraphics[width=6cm]{$logo$} \\ \medskip
+$endif$
+$if(course)$			
+\spacedlowsmallcaps{$course$}
+$endif$
+\vfill
+\begingroup
+\color{CTtitle}\spacedallcaps{\huge $title$} \\ \bigskip
+\endgroup
+$if(subtitle)$
+\medskip
+\textit{$subtitle$}
+$endif$
+\vfill
+$if(author)$
+\spacedallcaps{\LARGE $author$} \\
+$if(matr)$
+\spacedlowsmallcaps{$matr$}
+$endif$
+$endif$
+\vfill
+$if(supervisor)$
+\spacedallcaps{Relatore}\\
+\spacedlowsmallcaps{$supervisor.title$}\\
+\spacedlowsmallcaps{$supervisor.name$}\\
+$endif$
+\vfill
+$if(academic-year)$
+\vfill
+\spacedlowsmallcaps{$academic-year$}
+$endif$
+\end{center}
+$if(twoside)$
+\end{addmargin}
+$endif$
+\end{titlepage}
+$endif$
+%*******************************************************
+
+% copyright
+$if(copyright)$
+\clearpage
+\thispagestyle{empty}
+\hfill
+\vfill
+\noindent Copyright
+\textcopyright\ \the\year{} $if(author)$$author$$endif$
+
+\bigskip
+\noindent $copyright$
+$endif$
+%*******************************************************
+
+%  Dedication
+$if(dedication)$
+\cleardoublepage
+\thispagestyle{empty}
+\phantomsection
+$if(dedication-title)$
+\pdfbookmark[1]{$dedication-title$}{$dedication-title$}
+$endif$
+\vspace*{3cm}
+\begin{flushright}
+\textit{$dedication$}
+\end{flushright}
+$endif$
+%*******************************************************
+
+%  Quote
+$if(quote)$
+\cleardoublepage
+\thispagestyle{empty}
+\phantomsection
+\vspace*{3cm}
+\begin{flushright}
+\textit{$quote$}\\ \medskip
+$if(quote-author)$        
+--- \spacedlowsmallcaps{$quote-author$}
+$endif$
+\end{flushright}
+$endif$
+%*******************************************************
+
+%  Abstract
+$if(abstract)$
+$if(abstract-title)$
+\pdfbookmark[1]{$abstract-title$}{$abstract-title$}
+\chapter*{$abstract-title$}
+$else$
+\pdfbookmark[1]{Abstract}{Abstract}
+\chapter*{Abstract}
+$endif$
+%\begin{center}
+$abstract$
+%\end{center}
+$endif$
+%*******************************************************
+
+%  Index
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+$if(toc-depth)$
+\setcounter{tocdepth}{$toc-depth$}
+$endif$
+\tableofcontents
+\pdfbookmark[1]{\contentsname}{tableofcontents}
+$endif$
+
+$if(lof)$
+$if(lof-title)$
+\renewcommand*\listfigurename{$lof-title$}
+$endif$
+\listoffigures
+\pdfbookmark[1]{\listfigurename}{lof}
+$endif$
+
+$if(lot)$
+$if(lot-title)$
+\renewcommand*\listtablename{$lot-title$}
+$endif$
+\listoftables
+\pdfbookmark[1]{\listtablename}{lot}
+$endif$
+
+$if(acronym)$
+$if(acronym-title)$
+\pdfbookmark[1]{$acronym-title$}{$acronym-title$}
+\markboth{\spacedlowsmallcaps{$acronym-title$}}{\spacedlowsmallcaps{$acronym-title$}}
+\chapter*{$acronym-title$}
+$else$
+\pdfbookmark[1]{Acronyms}{acronyms}
+\markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
+\chapter*{Acronyms}
+$endif$
+\begin{acronym}[UMLX]
+$for(acronym)$
+\acro{$acronym.name$}{$acronym.description$}
+$endfor$
+\end{acronym}
+\cleardoublepage
+$endif$
+%*******************************************************
+
+% Mainmatter
+\cleardoublepage
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+
+$body$
+
+$if(acknowledgments)$
+$if(acknowledgments-title)$
+\chapter*{$acknowledgments-title$}
+$else$
+\chapter*{acknowledgments}
+$endif$
+$acknowledgments$
+$endif$
+
+$if(bibliography)$
+\printbibliography[heading=bibintoc]
+$endif$
+
+\end{document}
