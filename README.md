@@ -5,6 +5,8 @@
 *LaTeKiSS* è realizzato in modo da essere quanto più possibile *LaTex-free* per l'utente finale. Lo studente, così, potrà scrivere la sua tesi in *markdown* e inserire le informazioni extra nel file `metadata.yaml`.
 Nella seguente guida è specificato come adattare il template alle proprie necessità e come ottenere il documento finale.
 
+Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato da André Miede.
+
 ---
 
 ## Guida
@@ -108,3 +110,5 @@ Nella seguente guida è specificato come adattare il template alle proprie neces
   se si desidera ottenere pagina destra e pagina sinistra. Falso come valore di default
 
 [pandoc]: https://pandoc.org/
+
+[classicthesis]: https://bitbucket.org/amiede/classicthesis/wiki/Home
