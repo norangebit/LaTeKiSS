@@ -192,12 +192,13 @@ $endif$
 % Titlepage
 $if(title)$
 \begin{titlepage}
-
+$if(twoside)$
+\begin{addmargin}[-1cm]{-3.4cm}
+$else$
+\begin{addmargin}[-2.5cm]{-2cm}
+$endif$
 \pagestyle{plain}
 \pdfbookmark[1]{Il mio titolo}{titlepage}
-$if(twoside)$
-\begin{addmargin}[-1cm]{-3cm}
-$endif$
 \begin{center}
 \Large
 
@@ -241,9 +242,7 @@ $if(academic-year)$
 \spacedlowsmallcaps{$academic-year$}
 $endif$
 \end{center}
-$if(twoside)$
 \end{addmargin}
-$endif$
 \end{titlepage}
 $endif$
 %*******************************************************
