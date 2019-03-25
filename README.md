@@ -22,91 +22,103 @@ Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato
 
 ### Variabili
 
-- `abstract`(string)
+- `abstract` (string)
   abstract del documento
-- `abstract-title`(string)
+- `abstract-title` (string)
   titolo della pagina dell'abstract
-- `academic-year`(string)
+- `academic-year` (string)
   anno accademico
-- `acronym`(lista)
+- `acronym` (lista)
   - `name`(string)
   nome dell'acronimo
-  - `description`(string)
+  - `description` (string)
   descrizione dell'acronimo
-- `acronym-title`(string)
+- `acronym-title` (string)
   titolo della pagina degli acronimi
-- `acknowledgments`(string)
+- `acknowledgments `(string)
   ringraziamenti
-- `acknowledgments-title`(string)
+- `acknowledgments-title `(string)
   titolo della pagina dei ringraziamenti
-- `author`(string)
+- `author` (string)
   nome e cognome dell'autore
-- `babel`(string)
+- `babel` (string)
   lingua del pacchetto babel
-- `bibliography`(string)
+- `bibliography `(string)
   path del file .bib
-- `copyright`(string)
+- `copyright` (string)
   messaggio di copyright
-- `course`(string)
+- `course` (string)
   il corso di laurea che si sta frequentando
-- `dedication`(string)
+- `dedication `(string)
   dedica
-- `dedication-title`(string)
+- `dedication-title` (string)
   titolo della pagina di dedica
-- `department`(string)
+- `department` (string)
   il dipartimento a quale afferisce il corso di laurea
-- `draf`(string)
+- `draf` (string)
   versione della bozza. Da non specificare nel documento finale
-- `fontsize`(string)
+- `eulerchapternumber` (boolean)
+  usa il font AMS Euler per il numero del capitolo. Palatino come font di default
+- `floatnumbering` (boolean)
+  usa la numerazione float per le figure e le altre risorse. False come valore di default
+- `fontsize `(string)
   grandezza del carattere. 11pt come valore di default
-- `hidelinks`(boolean)
+- `hidelinks `(boolean)
   se impostato i link appaiono in nero. Falso come valore di default
-- `institute`(string)
+- `institute `(string)
   l'istituto al quale si è iscritti
-- `keyworks`(lista di string)
+- `keywords` (lista di string)
   lista con le parole chiave del documento
-- `logo`(string)
+- `lineheaders` (boolean)
+  aggiunge una linea di separazione tra il numero del capitolo e il nome del capitolo. Falso come valore di default
+- `logo` (string)
   path del logo dell'università
-- `matr`(int)
+- `matr` (int)
   matricola dell'autore
-- `monochrome`(boolean)
+- `monochrome` (boolean)
   se impostato gli snippet saranno in bianco e nero. Falso come valore di default
-- `onlyused`(boolean)
+- `onlyused` (boolean)
   stampa solo gli acronimi utilizzati nel testo. Falso come valore di default
-- `openright`(boolean)
+- `openright` (boolean)
   il capitolo inizia sempre alla pagina destra. Falso come valore di default
-- `paper`(string)
+- `paper` (string)
   grandezza del foglio. A4 come valore di default
-- `quote`(string)
+- `quote` (string)
   citazione
-- `quote-author`(string)
+- `quote-author` (string)
   autore della citazione
-- `subject`(string)
+- `subject` (string)
   oggetto della tesi
-- `subtitle`(string)
+- `subtitle `(string)
   sottotitolo della tesi
 - `supervisor`
-  - `name`(string)
+  - `name` (string)
     nome del relatore
-  - `title`(string)
+  - `title` (string)
     titolo del relatore
-- `title`(string)
+- `style` (string)
+  consente di impostare lo liste della tesi tra classicthesis e arsclassica. classicthesis come valore di default
+- `title` (string)
   titolo della tesi
-- `toc`(boolean)
+- `toc` (boolean)
   include l'indice
-- `toc-depth`(int)
+- `toc-depth` (int)
   configura la profondità dell'indice. Due come valore di default
-- `toc-title`(string)
+- `toc-dotted` (boolean)
+  allinea i numeri di pagina a destra aggiungendo i puntini. False come valore di default
+- `toc-indent` (boolean)
+  indenta l'indice. True come valore di default
+- `toc-title` (string)
   configura il titolo dell'indice
-- `lof`(boolean)
+- `lof` (boolean)
   include l'indice delle figure
-- `lof-title`(string)
+- `lof-title` (string)
   configura il titolo dell'indice delle figure
-- `lot`(boolean)
+- `lot` (boolean)
   include l'indice delle tabelle
-- `lot-title`(string)
+- `lot-title` (string)
   configura il titolo dell'indice delle figure
-- `twoside`(boolean)
+- `twoside` (boolean)
   se si desidera ottenere pagina destra e pagina sinistra. Falso come valore di default
 
 [pandoc]: https://pandoc.org/
