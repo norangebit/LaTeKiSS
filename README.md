@@ -102,12 +102,12 @@ Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato
   titolo della tesi
 - `toc` (boolean)
   include l'indice
+- `toc-aligned` (boolean)
+  allinea l'indice. False come valore di default
 - `toc-depth` (int)
   configura la profondità dell'indice. Due come valore di default
 - `toc-dotted` (boolean)
   allinea i numeri di pagina a destra aggiungendo i puntini. False come valore di default
-- `toc-indent` (boolean)
-  indenta l'indice. True come valore di default
 - `toc-title` (string)
   configura il titolo dell'indice
 - `lof` (boolean)
