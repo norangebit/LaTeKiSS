@@ -1,8 +1,9 @@
 # LaTeKiSS
 
-**LaTeKiSS** è un template *[pandoc][]* per tesi di laurea. Il suo obbiettivo è sollevare gli studenti dall'impaginazione, in modo da concentrarsi esclusivamente sul contenuto.
+**LaTeKiSS** è un template *[pandoc][]* per tesi di laurea. Il suo obbiettivo è sollevare gli studenti dall'impaginazione, in modo da concentrarsi esclusivamente sul contenuto della tesi.
 
-*LaTeKiSS* è realizzato in modo da essere quanto più possibile *LaTex-free* per l'utente finale. Lo studente, così, potrà scrivere la sua tesi in *markdown* e inserire le informazioni extra nel file `metadata.yaml`.
+*LaTeKiSS* è realizzato in modo da essere quanto più possibile *LaTex-free* per l'utente finale. 
+Lo studente, così, potrà scrivere la sua tesi in *markdown* e inserire le informazioni extra tramite un file `.yaml`.
 Nella seguente guida è specificato come adattare il template alle proprie necessità e come ottenere il documento finale.
 
 Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato da André Miede.
@@ -19,6 +20,17 @@ Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato
   - Unix, Linux, macOS: `~/.pandoc/templates/`
   - Windows XP: `C:\Documents And Settings\USERNAME\Application Data\pandoc\templates`
   - Windows Vista o superiore: `C:\Users\USERNAME\AppData\Roaming\pandoc\templates`
+
+### Utilizzo
+
+Una volta installato tutto il materiale necessario sarà specificare l'utilizzo del tema *LaTeKiSS* durante la compilazione tramite pandoc.
+Per esempio nel caso in cui l'intera tesi sia stata scritta all'interno del file `thesis.md` e i vari metadati più tutte le impostazioni per la compilazione siano contenute nel file `metadata.yaml` è possibile ottenere il documento formattato in pdf attraverso il seguente comando.
+
+Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
+
+```bash
+pandoc thesis.md metadata.yaml -o thesis.pdf --template latekiss
+```
 
 ### Variabili
 
