@@ -24,13 +24,13 @@ Questo template usa il pacchetto LaTeX [ClassicThesis][classicthesis] realizzato
 ### Utilizzo
 
 Una volta installato tutto il materiale necessario sarà specificare l'utilizzo del tema *LaTeKiSS* durante la compilazione tramite pandoc.
-Per esempio nel caso in cui l'intera tesi sia stata scritta all'interno del file `thesis.md` e i vari metadati più tutte le impostazioni per la compilazione siano contenute nel file `metadata.yaml` è possibile ottenere il documento formattato in pdf attraverso il seguente comando.
-
-Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
+Per esempio nel caso in cui l'intera tesi sia stata scritta all'interno del file `thesis.md` è possibile ottenere il documento formattato in pdf attraverso il seguente comando.
 
 ```bash
-pandoc thesis.md metadata.yaml -o thesis.pdf --template latekiss
+pandoc thesis.md -o thesis.pdf --template latekiss
 ```
+
+Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
 
 ### Variabili
 
@@ -41,12 +41,23 @@ pandoc thesis.md metadata.yaml -o thesis.pdf --template latekiss
 - `academic-year` (string)
   anno accademico
 - `acronym` (lista)
-  - `name`(string)
-  nome dell'acronimo
-  - `description` (string)
-  descrizione dell'acronimo
-- `acronym-title` (string)
+  - `short`(string)
+  nome breve dell'acronimo
+  - `long` (string)
+  nome lungo dell'acronimo
+- `ac-title` (string)
   titolo della pagina degli acronimi
+- `ac-onlyused` (boolean)
+  stampa solo gli acronimi utilizzati nel testo. Falso come valore di default
+- `ac-smaller` (boolean)
+  stampa gli acronimi con un font più piccolo
+- `ac-footnote` (boolean)
+  stampa il nome lungo dell'acronimo come nota a piè di pagina
+- `ac-nohyperlinks` (boolean)
+  gli acronimi non presentano gli hyperlink
+- `ac-withpage` (boolean)
+  nella lista degli acronimi viene aggiunta la pagine di primo utilizzo.
+  Per un corretto funzionamento utilizzare anche `ac-onlyused`
 - `acknowledgments `(string)
   ringraziamenti
 - `acknowledgments-title `(string)
@@ -89,11 +100,9 @@ pandoc thesis.md metadata.yaml -o thesis.pdf --template latekiss
   matricola dell'autore
 - `monochrome` (boolean)
   se impostato gli snippet saranno in bianco e nero. Falso come valore di default
-- `onlyused` (boolean)
-  stampa solo gli acronimi utilizzati nel testo. Falso come valore di default
 - `openright` (boolean)
   il capitolo inizia sempre alla pagina destra. Falso come valore di default
-- `paper` (string)
+- `papersize` (string)
   grandezza del foglio. A4 come valore di default
 - `quote` (string)
   citazione
