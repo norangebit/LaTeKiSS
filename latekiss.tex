@@ -136,32 +136,6 @@ $endif$
 \usepackage{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-$if(title-meta)$
-  pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-  pdfauthor={$author-meta$},
-$endif$
-$if(lang)$
-  pdflang={$lang$},
-$endif$
-$if(subject)$
-  pdfsubject={$subject$},
-$endif$
-$if(keywords)$
-  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
-$endif$
-$if(colorlinks)$
-  colorlinks=true,
-  linkcolor=$if(linkcolor)$$linkcolor$$else$CTlink$endif$,
-  filecolor=$if(filecolor)$$filecolor$$else$Black$endif$,
-  citecolor=$if(citecolor)$$citecolor$$else$CTcitation$endif$,
-  urlcolor=$if(urlcolor)$$urlcolor$$else$CTurl$endif$,
-$else$
-  hidelinks,
-$endif$
-  pdfcreator={LaTeX via pandoc, ClassicThesis and LaTeKiSS}}
 \urlstyle{same} % disable monospaced font for URLs
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
@@ -342,6 +316,35 @@ $endif$
 
 \usepackage{acronym}
 $endif$
+
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor=$if(linkcolor)$$linkcolor$$else$CTlink$endif$,
+  filecolor=$if(filecolor)$$filecolor$$else$Black$endif$,
+  citecolor=$if(citecolor)$$citecolor$$else$CTcitation$endif$,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$CTurl$endif$,
+$else$
+  hidelinks,
+  colorlinks=false,
+$endif$
+  pdfcreator={LaTeX via pandoc, ClassicThesis and LaTeKiSS}
+}
 
 \begin{document}
 \pagenumbering{roman}
