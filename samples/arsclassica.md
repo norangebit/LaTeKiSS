@@ -1,7 +1,7 @@
 ---
 title: Il tuo titolo
 author: Nome Cognome
-matr: 1000000001
+matr: 1000001
 supervisor:
   name: Nome del Professore
 toc: true
@@ -12,6 +12,8 @@ logo: figures/logo.jpg
 lot: true
 style: arsclassica
 babel: italian
+lang: it-IT
+colorlinks: true
 abstract: |
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus at sapien accumsan placerat. Cras sed egestas nulla, sed tempor mi. Duis arcu tortor, finibus et erat at, laoreet tristique ligula. Ut enim est, ornare sit amet arcu id, maximus auctor ex. Curabitur nisi quam, pretium sit amet porttitor sit amet, feugiat quis felis. Ut ut sem nec metus facilisis lobortis. Cras eros enim, bibendum quis quam vel, commodo laoreet augue. Praesent vestibulum orci dui, ut rhoncus tellus condimentum id. Phasellus vel convallis risus, et pulvinar leo. Nulla laoreet enim sit amet nibh lobortis, at vestibulum odio lobortis. Sed vitae fringilla tellus. Vestibulum eget facilisis purus, a sagittis dui.
   
@@ -20,12 +22,14 @@ abstract: |
   \noindent Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut lobortis consequat ultricies. Nam eu metus et mauris blandit ultrices. Quisque pellentesque, lorem a pellentesque eleifend, augue massa porttitor leo, non euismod sapien neque et velit. Suspendisse sagittis massa quis neque tincidunt congue. Donec at leo orci. Nulla facilisi.
 acknowledgments: Grazie a tutti
 acknowledgments-title: ringraziamenti
-acronym-title: Acronimi
+ac-title: Acronimi
+ac-onlyused: true
+ac-withpage: true
 acronym:
-  - name: PDF
-    description: Portable Document Format
-  - name: AR
-    description: Augmented Reality
+  - short: PDF
+    long: Portable Document Format
+  - short: AR
+    long: Augmented Reality
 ---
 
 
@@ -77,17 +81,21 @@ Sed odio nulla, faucibus a tortor sed, placerat hendrerit erat. Nullam at pharet
 
 ## Snippet di codice
 
-```kotlin
+``` {.kotlin #lst:test-listing caption="Listato scritto in kotlin"}
 fun main() {
   println("hello world!")
 }
 ```
 
+Il @lst:test-listing è scritto in kotlin.
+
 ## Espressioni matematiche
 
 $$
 \frac{1}{x^2}
-$$
+$$ {#eq:test-equation}
+
+Riferimento all'@eq:test-equation tramite `pandoc-crossref`.
 
 ## Liste
 
@@ -105,12 +113,22 @@ $$
 
 ## Tabelle
 
+Questo è un riferimento ad una tabella @tbl:test-table ottenuto mediante il filtro `pandoc-crossref`.
+
 |     | 1   | 2   | 3   | 4   | 5   |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 1   | 1.1 | 1.2 | 1.3 | 1.4 | 1.5 |
 | 2   | 2.1 | 2.2 | 2.3 | 2.4 | 2.5 |
 | 3   | 3.1 | 3.2 | 3.3 | 3.4 | 3.5 |
-: Tabella con dei numeri
+: Tabella con dei numeri {#tbl:test-table}
+
+## Citazioni
+
+Questa è una citazione [@doe2006] ottenuta tramite `pandoc-citeproc`.
+
+## Acronimi
+
+Questo è il fiderimento ad un arconimo, \ac{PDF}.
 
 # Capitolo tre
 
@@ -123,3 +141,5 @@ Cras porttitor orci eget tortor rhoncus posuere et nec sapien. Suspendisse metus
 Nullam at faucibus leo. In vitae lorem at ligula mollis euismod sit amet sed lacus. Phasellus vestibulum luctus tellus, et vehicula felis blandit quis. Nullam justo risus, suscipit sed mi ac, tincidunt porttitor lacus. Quisque vehicula, enim maximus ornare imperdiet, nisi nunc viverra dolor, vel laoreet nibh tellus sed libero. Vivamus pellentesque dictum dolor a vehicula. Donec vulputate, urna in suscipit facilisis, nisi lectus vestibulum erat, a imperdiet dolor metus sit amet metus. Curabitur sodales purus at nisi pretium, nec sodales erat tristique. Maecenas sed ligula sed sem posuere consequat eu vitae neque. Nullam porta, elit sit amet vulputate euismod, sapien arcu dictum eros, eu hendrerit neque velit in lorem.
 
 Sed id finibus massa. Curabitur laoreet mauris efficitur nulla porttitor auctor. Etiam et augue tincidunt, consectetur justo eget, molestie nisl. Phasellus et tincidunt magna. Integer ullamcorper commodo pharetra. Proin ullamcorper eget nulla at fringilla. Maecenas in libero dolor. Nunc dolor nunc, lacinia eu ultricies in, sagittis in tortor. Nulla quis eleifend odio, non porta lorem. 
+
+# Bibliografia
