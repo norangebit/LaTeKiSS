@@ -32,6 +32,39 @@ pandoc thesis.md -o thesis.pdf --template latekiss
 
 Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
 
+#### Configurazioni consigliate
+
+Al fine di ottenere un risultato migliore è consigliabile utilizzare il flag `--top-level-division chapter` e la variabile `numbersections` settata a `true`.
+
+Con queste nuove configurazioni il comando per la compilazione è il seguente.
+
+```bash
+pandoc arsclassica.md -o arsclassica.pdf --top-level-division chapter -V numbersections --template latekiss
+```
+
+#### Link
+
+I link e i riferimenti sono in nero di default, e possibile abilitare il colore andando a settare la variabile `colorlinks` a `true`.
+
+È possibile cambiare i colori di default andando a settare le variabili `linkcolor`, `filecolor`, `citecolor`, `urlcolor`.
+
+#### Riferimenti
+
+È possibile gestire i vari riferimenti attraverso il filtro [pandoc-crossref][].
+
+#### Bibliografia
+
+È possibile gestire la bibliografia attraverso il filtro [pandoc-citeproc][].
+
+#### Compilazione degli esempi
+Di seguito è riportato il comando utilizzato per compilare gli esempi forniti nella cartella samples.
+
+Rispetto al comando precedente in questo caso sono si è utilizzato `pandoc-crossref`, `pandoc-citeproc` e le configurazioni consigliate.
+
+```bash
+pandoc --template latekiss <input-file> -o <output-file> --top-level-division chapter -V numbersections -F pandoc-crossref --bibliography bibliography.yaml 
+```
+
 ### Variabili
 
 - `abstract` (string)
@@ -86,8 +119,8 @@ Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
   usa la numerazione float per le figure e le altre risorse. False come valore di default
 - `fontsize `(string)
   grandezza del carattere. 11pt come valore di default
-- `hidelinks `(boolean)
-  se impostato i link appaiono in nero. Falso come valore di default
+- `colorlink`(boolean)
+  se impostato i link appaiono colorati. Falso come valore di default
 - `institute `(string)
   l'istituto al quale si è iscritti
 - `keywords` (lista di string)
@@ -98,8 +131,6 @@ Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
   path del logo dell'università
 - `matr` (int)
   matricola dell'autore
-- `monochrome` (boolean)
-  se impostato gli snippet saranno in bianco e nero. Falso come valore di default
 - `openright` (boolean)
   il capitolo inizia sempre alla pagina destra. Falso come valore di default
 - `papersize` (string)
@@ -145,3 +176,8 @@ Nella cartella `samples` sono disponibili alcuni esempi di utilizzo.
 [pandoc]: https://pandoc.org/
 
 [classicthesis]: https://bitbucket.org/amiede/classicthesis/wiki/Home
+
+[pandoc-crossref]: https://lierdakil.github.io/pandoc-crossref/
+
+[pandoc-citeproc]: https://github.com/jgm/pandoc-citeproc
+
