@@ -403,7 +403,13 @@ $if(subtitle)$
 \medskip
 \textit{$subtitle$} \\
 $endif$
+\end{center}
 \vfill
+
+%===== superviros and author =====%
+% centered
+$if(titlepage-center)$
+\begin{center}
 $if(author)$
 \spacedallcaps{\LARGE $author$} \\
 $if(matr)$
@@ -416,7 +422,44 @@ $if(supervisor)$
 \spacedlowsmallcaps{$supervisor.title$}\\
 \spacedlowsmallcaps{$supervisor.name$}\\
 $endif$
+$if(cosupervisor)$
 \vfill
+\spacedallcaps{Corelatore}\\
+\spacedlowsmallcaps{$cosupervisor.title$}\\
+\spacedlowsmallcaps{$cosupervisor.name$}\\
+$endif$
+\end{center}
+$else$
+% aligned
+$if(supervisor)$
+\begin{minipage}{2in}
+\spacedallcaps{Relatore:}\\
+\spacedlowsmallcaps{$supervisor.title$}\\
+\spacedlowsmallcaps{$supervisor.name$}
+\end{minipage}
+$endif$
+$if(author)$
+\hfill
+\begin{minipage}{1.5in}
+\spacedallcaps{Candidato:}\\
+\spacedlowsmallcaps{$author$}\\
+$if(matr)$
+\spacedlowsmallcaps{$matr$}
+$endif$
+\end{minipage}
+$endif$
+$if(cosupervisor)$
+\\
+\\
+\\
+\spacedallcaps{Corelatore:}\\
+\spacedlowsmallcaps{$cosupervisor.title$}\\
+\spacedlowsmallcaps{$cosupervisor.name$}
+$endif$
+$endif$
+
+\vfill
+\begin{center}
 $if(academic-year)$
 \vfill
 \spacedlowsmallcaps{$academic-year$}
