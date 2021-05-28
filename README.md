@@ -54,7 +54,7 @@ I link e i riferimenti sono in nero di default, e possibile abilitare il colore 
 
 #### Bibliografia
 
-È possibile gestire la bibliografia attraverso il filtro [pandoc-citeproc][].
+È possibile gestire la bibliografia attraverso il flag `--citeproc`.
 
 #### Compilazione degli esempi
 Di seguito è riportato il comando utilizzato per compilare gli esempi forniti nella cartella samples.
@@ -178,6 +178,4 @@ pandoc --template latekiss <input-file> -o <output-file> --top-level-division ch
 [classicthesis]: https://bitbucket.org/amiede/classicthesis/wiki/Home
 
 [pandoc-crossref]: https://lierdakil.github.io/pandoc-crossref/
-
-[pandoc-citeproc]: https://github.com/jgm/pandoc-citeproc
 
